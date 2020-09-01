@@ -33,8 +33,9 @@ while test_question < 5:
         continue
 
     if input_result != result:
-        wrong_answers = +1
         print(f"{multiplicable} x {multiplier} = {result}")
+    else:
+        wrong_answers += 1
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
