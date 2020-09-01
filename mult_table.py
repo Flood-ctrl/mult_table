@@ -9,7 +9,7 @@ re_multiplicable = None
 test_question = int(0)
 attempts = int(5)
 
-while test_question < 5:
+while test_question < attempts:
     
     print(f"attempts {attempts} and question - {test_question}")
     multiplicable = random.choice(elementes)
@@ -34,8 +34,8 @@ while test_question < 5:
 
     if input_result != result:
         print(f"{multiplicable} x {multiplier} = {result}")
-    else:
         wrong_answers += 1
+
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
