@@ -7,11 +7,11 @@ wrong_answers = 0
 re_multiplier = None
 re_multiplicable = None
 test_question = int(0)
-attempts = int(5)
+attempts = int(10)
+passed_questions = dict()
 
 while test_question < attempts:
-    
-    print(f"attempts {attempts} and question - {test_question}")
+
     multiplicable = random.choice(elementes)
     multiplier = random.choice(elementes)
 
@@ -20,6 +20,11 @@ while test_question < attempts:
         multiplier = re_multiplier
         re_multiplier = None 
         re_multiplicable = None
+    else:
+        for mult_key, mult_value in passed_questions.items():
+            if mult_key == multiplicable and mult_value == mult_value:
+                print(f"Duplicate {mult_key} x {mult_value}")
+                continue
 
     result = multiplicable * multiplier
     print(f"{multiplicable} x {multiplier} =", end=' ')
@@ -33,9 +38,14 @@ while test_question < attempts:
         continue
 
     if input_result != result:
-        print(f"{multiplicable} x {multiplier} = {result}")
+        print(f"Wrong answer, correct - {multiplicable} x {multiplier} = {result}")
         wrong_answers += 1
 
+    passed_questions[multiplicable] = multiplier
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
+print(test_question)
+
+for pairs in passed_questions.items():
+    print(pairs)
