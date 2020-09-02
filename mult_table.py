@@ -8,7 +8,7 @@ re_multiplier = None
 re_multiplicable = None
 test_question = int(0)
 attempts = int(10)
-passed_questions = dict()
+passed_questions = list()
 
 while test_question < attempts:
 
@@ -21,11 +21,10 @@ while test_question < attempts:
         re_multiplier = None 
         re_multiplicable = None
     else:
-        if multiplicable in passed_questions.keys():
+        string_number = str(multiplicable) + str(multiplier)
+        if string_number in passed_questions:
             print(multiplicable)
-            if passed_questions[multiplicable] == multiplier:
-                print(multiplier)
-                continue
+            continue
 
     result = multiplicable * multiplier
     print(f"{multiplicable} x {multiplier} =", end=' ')
@@ -42,11 +41,10 @@ while test_question < attempts:
         print(f"Wrong answer, correct - {multiplicable} x {multiplier} = {result}")
         wrong_answers += 1
 
-    passed_questions[multiplicable] = multiplier
+    passed_questions.append(string_number)
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
 print(test_question)
 
-for pairs in passed_questions.items():
-    print(pairs)
+print(string_number)
