@@ -21,9 +21,10 @@ while test_question < attempts:
         re_multiplier = None 
         re_multiplicable = None
     else:
-        for mult_key, mult_value in passed_questions.items():
-            if mult_key == multiplicable and mult_value == mult_value:
-                print(f"Duplicate {mult_key} x {mult_value}")
+        if multiplicable in passed_questions.keys():
+            print(multiplicable)
+            if passed_questions[multiplicable] == multiplier:
+                print(multiplier)
                 continue
 
     result = multiplicable * multiplier
