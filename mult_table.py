@@ -23,7 +23,7 @@ while test_question < attempts:
     else:
         string_number = str(multiplicable) + str(multiplier)
         if string_number in passed_questions:
-            print(multiplicable)
+            print(f"Duplicate - {string_number}")
             continue
 
     result = multiplicable * multiplier
@@ -47,4 +47,4 @@ while test_question < attempts:
 print(f"Wrong answers - {wrong_answers}")
 print(test_question)
 
-print(string_number)
+print(passed_questions)
