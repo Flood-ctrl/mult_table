@@ -6,7 +6,7 @@ elementes = (2, 3, 4, 5, 6, 7, 8, 9)
 wrong_answers = 0
 re_multiplicable = None
 re_multiplier = None
-start__multiplicable = int(2)
+start__multiplicable = int(0)
 test_question = int(0)
 attempts = int(10)
 passed_questions = list()
@@ -53,6 +53,6 @@ while test_question < attempts:
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
-print(test_question)
+#print(test_question)
 
-print(passed_questions)
+#print(passed_questions)
