@@ -4,16 +4,24 @@ import random
 
 elementes = (2, 3, 4, 5, 6, 7, 8, 9)
 wrong_answers = 0
-re_multiplier = None
 re_multiplicable = None
+re_multiplier = None
+start__multiplicable = int(2)
 test_question = int(0)
 attempts = int(10)
 passed_questions = list()
 
+if start__multiplicable != 0:
+    attempts = len(elementes)
+
 while test_question < attempts:
 
-    multiplicable = random.choice(elementes)
-    multiplier = random.choice(elementes)
+    if start__multiplicable != 0:
+        multiplicable = start__multiplicable
+        multiplier = random.choice(elementes)
+    else:
+        multiplicable = random.choice(elementes)
+        multiplier = random.choice(elementes)
 
     if re_multiplicable is not None:
         multiplicable = re_multiplicable
