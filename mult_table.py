@@ -6,18 +6,18 @@ elementes = (2, 3, 4, 5, 6, 7, 8, 9)
 wrong_answers = 0
 re_multiplicable = None
 re_multiplier = None
-start__multiplicable = int(0)
+start_multiplicable = int(0)
 test_question = int(0)
 attempts = int(10)
 passed_questions = list()
 
-if start__multiplicable != 0:
+if start_multiplicable != 0:
     attempts = len(elementes)
 
 while test_question < attempts:
 
-    if start__multiplicable != 0:
-        multiplicable = start__multiplicable
+    if start_multiplicable != 0:
+        multiplicable = start_multiplicable
         multiplier = random.choice(elementes)
     else:
         multiplicable = random.choice(elementes)
