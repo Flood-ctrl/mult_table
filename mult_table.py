@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import random
+import sys, getopt, random
 
 elementes = (2, 3, 4, 5, 6, 7, 8, 9)
 wrong_answers = 0
@@ -11,8 +11,31 @@ test_question = int(0)
 attempts = int(10)
 passed_questions = list()
 
+def input_args():
+   input_attempts = ''
+   input_table = ''
+   try:
+      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+   except getopt.GetoptError:
+      print ('test.py -i <input_attempts> -o <input_table>')
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         print ('test.py -i <input_attempts> -o <input_table>')
+         sys.exit()
+      elif opt in ("-i", "--ifile"):
+         input_attempts = arg
+      elif opt in ("-o", "--ofile"):
+         input_table = arg
+   print ('Input file is "'), input_attempts
+   print ('Output file is "'), input_table
+
+
 if start_multiplicable != 0:
     attempts = len(elementes)
+
+if sys.argv[0] is not None:
+    start_multiplicable = int(sys.argv[1])
 
 while test_question < attempts:
 
