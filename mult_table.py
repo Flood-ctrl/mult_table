@@ -1,23 +1,56 @@
 #!/usr/bin/env python3
 
-import random
+import sys, getopt, random
 
 elementes = (2, 3, 4, 5, 6, 7, 8, 9)
 wrong_answers = 0
 re_multiplicable = None
 re_multiplier = None
-start__multiplicable = int(0)
+start_multiplicable = int(0)
 test_question = int(0)
-attempts = int(10)
+attempts = len(elementes)
 passed_questions = list()
+input_attempts = None
+input_table = None
 
-if start__multiplicable != 0:
-    attempts = len(elementes)
+# Validate input arguments
+try:
+   opts, args = getopt.getopt(sys.argv[1:],"h:a:t:")
+except getopt.GetoptError:
+   print (f'{sys.argv[0]} -a <attempts> -t <table>')
+   if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+       sys.exit(0)
+   sys.exit(2)
+
+for opt, arg in opts:
+   if opt == "-h" or opt == "--help":
+      print (f'{sys.argv[0]} -a <attempts> -t <table>')
+      sys.exit(0)
+   elif opt in ("-a", "--attempts"):
+       try:
+           input_attempts = int(arg)
+       except ValueError:
+           print("Only numbers are allowed")
+           sys.exit(2)
+   elif opt in ("-t", "--table"):
+       try:
+           input_table = int(arg)
+           if not 2 <= input_table <= 9:
+               print("Tables (-t) allowed: [2 3 4 5 6 7 8 9]")
+               sys.exit(2)
+       except ValueError:
+           print("Only numbers are allowed")
+           sys.exit(2)
+
+if input_table is not None:
+    start_multiplicable = int(input_table)
+
+if input_attempts is not None:
+    attempts = int(input_attempts)
 
 while test_question < attempts:
-
-    if start__multiplicable != 0:
-        multiplicable = start__multiplicable
+    if start_multiplicable != 0:
+        multiplicable = start_multiplicable
         multiplier = random.choice(elementes)
     else:
         multiplicable = random.choice(elementes)
@@ -31,7 +64,7 @@ while test_question < attempts:
     else:
         string_number = str(multiplicable) + str(multiplier)
         if string_number in passed_questions:
-            print(f"Duplicate - {string_number}")
+            #print(f"Duplicate - {string_number}")
             continue
 
     result = multiplicable * multiplier
@@ -53,6 +86,3 @@ while test_question < attempts:
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
-#print(test_question)
-
-#print(passed_questions)
