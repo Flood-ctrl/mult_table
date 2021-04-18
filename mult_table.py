@@ -8,7 +8,7 @@ re_multiplicable = None
 re_multiplier = None
 start_multiplicable = int(0)
 test_question = int(0)
-attempts = int(10)
+attempts = len(elementes)
 passed_questions = list()
 input_attempts = None
 input_table = None
@@ -42,14 +42,11 @@ for opt, arg in opts:
            print("Only numbers are allowed")
            sys.exit(2)
 
-print (input_attempts)
-print (input_table)
-
 if input_table is not None:
     start_multiplicable = int(input_table)
 
-if start_multiplicable != 0:
-    attempts = len(elementes)
+if input_attempts is not None:
+    attempts = int(input_attempts)
 
 while test_question < attempts:
     if start_multiplicable != 0:
@@ -67,7 +64,7 @@ while test_question < attempts:
     else:
         string_number = str(multiplicable) + str(multiplier)
         if string_number in passed_questions:
-            print(f"Duplicate - {string_number}")
+            #print(f"Duplicate - {string_number}")
             continue
 
     result = multiplicable * multiplier
