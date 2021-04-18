@@ -17,22 +17,21 @@ input_table = None
 try:
    opts, args = getopt.getopt(sys.argv[1:],"h:a:t:")
 except getopt.GetoptError:
-   print ('test.py -a <attempts> -t <table>')
+   print (f'{sys.argv[0]} -a <attempts> -t <table>')
+   if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+       sys.exit(0)
    sys.exit(2)
 
 for opt, arg in opts:
-
-   if opt == '-h':
-      print ('test.py -a <attempts> -t <table>')
-      sys.exit()
-
+   if opt == "-h" or opt == "--help":
+      print (f'{sys.argv[0]} -a <attempts> -t <table>')
+      sys.exit(0)
    elif opt in ("-a", "--attempts"):
        try:
            input_attempts = int(arg)
        except ValueError:
            print("Only numbers are allowed")
            sys.exit(2)
-
    elif opt in ("-t", "--table"):
        try:
            input_table = int(arg)
@@ -46,14 +45,13 @@ for opt, arg in opts:
 print (input_attempts)
 print (input_table)
 
-# if sys.argv[1] is not None:
-
+if input_table is not None:
+    start_multiplicable = int(input_table)
 
 if start_multiplicable != 0:
     attempts = len(elementes)
 
 while test_question < attempts:
-
     if start_multiplicable != 0:
         multiplicable = start_multiplicable
         multiplier = random.choice(elementes)
@@ -91,6 +89,3 @@ while test_question < attempts:
     test_question += 1
 
 print(f"Wrong answers - {wrong_answers}")
-#print(test_question)
-
-#print(passed_questions)
