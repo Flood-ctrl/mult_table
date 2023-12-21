@@ -6,25 +6,22 @@
     <title>Multiplication Table Quiz</title>
 </head>
 <body>
-    {% if num1 and num2 %}
-        <h1>What is {{ num1 }} times {{ num2 }}?</h1>
-        <form action="/quiz" method="post">
-            <input type="number" name="user_answer" required>
-            <input type="hidden" name="actual_answer" value="{{ answer }}">
-            <input type="submit" value="Check Answer">
-        </form>
-        {% if is_correct is not none and user_answer is defined and is_correct != "first_time_run" %}
+    <h1>What is {{ num1 }} times {{ num2 }}?</h1>
+    <form action="/quiz" method="post">
+        <input type="number" name="user_answer" value="{{ user_answer }}" required>
+        <input type="hidden" name="actual_answer" value="{{ answer }}">
+        <input type="submit" value="Check Answer">
+    </form>
+
+    {% if submitted_answer %}
+        {% if is_correct is not none %}
             {% if is_correct %}
-                <p style="color: green;">Correct!</p>
+                <p style="color: green;">Correct! Your score: {{ score.correct }}</p>
             {% else %}
-                <p style="color: red;">Incorrect. The correct answer is {{ answer }}. Your previous answer was {{ user_answer }}.</p>
+                <p style="color: red;">Incorrect. The correct answer is {{ answer }}. Your score: {{ score.correct }}</p>
             {% endif %}
+            <button id="nextButton" onclick="window.location.href='/next'" style="display: block;">Next</button>
         {% endif %}
-    {% else %}
-        <p>Click "Start Quiz" to begin.</p>
-        <form action="/quiz" method="post">
-            <input type="submit" value="Start Quiz">
-        </form>
     {% endif %}
 </body>
 </html>
