@@ -7,18 +7,18 @@
 </head>
 <body>
     <h1>What is {{ num1 }} times {{ num2 }}?</h1>
-    <form action="/quiz" method="post">
+    <form id="quizForm" action="/quiz" method="post" onsubmit="return validateAnswer()">
         <input type="number" name="user_answer" value="{{ user_answer }}" required>
         <input type="hidden" name="actual_answer" value="{{ answer }}">
-        <input type="submit" value="Check Answer">
+        <input type="submit" id="checkAnswerButton" value="Check Answer" {% if disable_button %}disabled{% endif %}>
     </form>
 
     {% if submitted_answer %}
         {% if is_correct is not none %}
             {% if is_correct %}
-                <p style="color: green;">Correct! Your score: {{ score.correct }}</p>
+            <p style="color: green;">Correct! Your score: {{ score['correct'] }}</p>
             {% else %}
-                <p style="color: red;">Incorrect. The correct answer is {{ answer }}. Your score: {{ score.correct }}</p>
+            <p style="color: red;">Incorrect. The correct answer is {{ answer }}. Your score: {{ score.get('correct', 0) }}</p>
             {% endif %}
             <button id="nextButton" onclick="window.location.href='/next'" style="display: block;">Next</button>
         {% endif %}

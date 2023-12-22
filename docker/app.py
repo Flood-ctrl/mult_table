@@ -5,8 +5,8 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 def generate_new_question():
-    num1 = random.randint(1, 10)
-    num2 = random.randint(1, 10)
+    num1 = random.randint(2, 9)
+    num2 = random.randint(2, 9)
     answer = num1 * num2
     return num1, num2, answer
 
@@ -38,12 +38,10 @@ def quiz():
         if session['submitted_answer']:
             if is_correct:
                 session['score']['correct'] += 1
-            else:
-                session['score']['incorrect'] += 1
 
         session['submitted_answer'] = True
 
-    return render_template('quiz.html', num1=num1, num2=num2, answer=answer, is_correct=is_correct, user_answer=user_answer, score=session['score'], submitted_answer=session['submitted_answer'])
+    return render_template('quiz.html', num1=num1, num2=num2, answer=answer, is_correct=is_correct, user_answer=user_answer, score=session['score'], submitted_answer=session['submitted_answer'], disable_button=True)
 
 @app.route('/next', methods=['GET', 'POST'])
 def next_question():
