@@ -8,7 +8,7 @@
 <body>
     <h1>What is {{ num1 }} times {{ num2 }}?</h1>
     <form id="quizForm" action="/quiz" method="post" onsubmit="return validateAnswer()">
-        
+        <p style="color: rgb(26, 0, 140); display: block; margin-top: 1cm;">Your score: {{ score['correct'] }}</p>
         <input type="number" name="user_answer" value="{{ user_answer }}" required>
         <input type="hidden" name="actual_answer" value="{{ answer }}">
         <input type="submit" id="checkAnswerButton" value="Check Answer" {% if disable_button %}disabled{% endif %}>
@@ -25,22 +25,22 @@
         {% endif %}
     {% endif %}
 
-<p style="color: rgb(26, 0, 140);" style="display: block; margin-top: 2cm;">Your score: {{ score['correct'] }}</p>
-<!-- Add this button alongside the "Next" and "Exit" buttons with custom styling -->
-<button id="exitButton" onclick="window.location.href='/exit_quiz'" style="display: block; margin-top: 2cm;">Exit</button>
+    <button id="exitButton" onclick="window.location.href='/exit_quiz'" style="display: block; margin-top: 2cm;">Exit</button>
 
+<!-- ... Your existing HTML ... -->
 
-    <script>
-        // Wait for the DOM to be ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Select the input element by its ID
+<script>
+    // Wait for the DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set focus on the input element after a short delay
+        setTimeout(function() {
             var inputElement = document.getElementById('quizForm');
 
-            // Set focus on the input element
             if (inputElement) {
-                inputElement.focus();
+                inputElement.querySelector('input[name="user_answer"]').focus();
             }
-        });
-    </script>
+        }, 100);
+    });
+</script>
 </body>
 </html>
