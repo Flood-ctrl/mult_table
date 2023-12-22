@@ -3,7 +3,6 @@ import random
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
-app.config['PERMANENT_SESSION_LIFETIME'] = 120
 
 def generate_new_question():
     num1 = random.randint(2, 9)
