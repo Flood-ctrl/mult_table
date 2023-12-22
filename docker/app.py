@@ -33,18 +33,18 @@ def quiz():
         if request.form.get('start_quiz'):
             session['quiz_started'] = True
             disable_check_button = False
+            session['score']['correct'] = 0
         try:
             user_answer = int(request.form['user_answer'])
             actual_answer = int(request.form['actual_answer'])
             is_correct = user_answer == actual_answer
+            session['submitted_answer'] = True
         except (KeyError, ValueError):
             is_correct = False
 
         if session['submitted_answer']:
             if is_correct:
                 session['score']['correct'] += 1
-
-        session['submitted_answer'] = True
 
     return render_template('quiz.html', num1=num1, num2=num2, answer=answer, is_correct=is_correct, user_answer=user_answer, score=session['score'], submitted_answer=session['submitted_answer'], disable_button=disable_check_button)
 
