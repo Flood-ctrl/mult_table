@@ -6,7 +6,7 @@
     <title>Multiplication Table Quiz</title>
 </head>
 <body>
-    <h1>What is {{ num1 }} times {{ num2 }}?</h1>
+    <h1>What is {{ num1 }} x {{ num2 }}?</h1>
     <form id="quizForm" action="/quiz" method="post" onsubmit="return validateAnswer()">
         <input type="number" name="user_answer" value="{{ user_answer }}" required>
         <input type="hidden" name="actual_answer" value="{{ answer }}">
