@@ -23,5 +23,18 @@
             <button id="nextButton" onclick="window.location.href='/next'" style="display: block;">Next</button>
         {% endif %}
     {% endif %}
+
+    <script>
+        // Wait for the DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select the input element by its name
+            var inputElement = document.getElementsByName('user_answer')[0];
+
+            // Set focus on the input element
+            if (inputElement) {
+                inputElement.focus();
+            }
+        });
+    </script>
 </body>
 </html>
